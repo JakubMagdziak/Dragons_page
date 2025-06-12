@@ -1,0 +1,14 @@
+{
+  "navbar": {
+    "home": "Home",
+    "news": "News",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Welcome to the Student Research Group",
+    "description": "We are a team of students passionate about modern technologies, cybersecurity, and R&D projects.",
+    "see_news": "View news",
+    "see_projects": "Our projects"
+  }
+}

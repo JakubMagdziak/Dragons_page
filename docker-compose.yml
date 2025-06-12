@@ -4,7 +4,7 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "3000:3000"
+      - "3000:5173"
     volumes:
       - ./frontend:/app
       - /app/node_modules
@@ -12,19 +12,23 @@ services:
       - backend
 
   backend:
-    build: ./backend
-    ports:
-      - "5000:5000"
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/kolo
-    depends_on:
-      - mongo
-
+      build: ./backend
+      container_name: backend-app
+      restart: unless-stopped
+      ports:
+        - "4000:5000"
+      environment:
+        - MONGO_URI=mongodb://mongo:27017/cyberdragons
+        - PORT=4000
+      depends_on:
+        - mongo
+      volumes:
+        - ./backend:/app
+      command: npm start
   mongo:
     image: mongo
+    container_name: mongo-db
+    restart: unless-stopped
     ports:
       - "27017:27017"
     volumes:

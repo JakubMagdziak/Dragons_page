@@ -1,22 +1,34 @@
-import express from "express";
-import mongoose from "mongoose";
-import cors from "cors";
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+
+import newsRoutes from '../routes/news.js';
+
 
 const app = express();
+
+const PORT = process.env.PORT || 4000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://mongo:27017/dragons-db';
+
 app.use(cors());
 app.use(express.json());
 
-const PORT = 5000;
-const MONGO_URI = process.env.MONGO_URI || "mongodb://mongo:27017/kolo";
+// Podłączamy router dla news
+app.use('/news', newsRoutes);
 
-mongoose.connect(MONGO_URI)
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch(err => console.error("❌ MongoDB error:", err));
-
-app.get("/", (req, res) => {
-  res.send("Backend działa!");
+// Podstawowy endpoint do testów
+app.get('/', (req, res) => {
+  res.send('Backend działa!');
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Backend działa na porcie ${PORT}`);
-});
+// Połączenie z MongoDB i uruchomienie serwera
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Połączono z MongoDB');
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error('Błąd połączenia z MongoDB:', err);
+  });

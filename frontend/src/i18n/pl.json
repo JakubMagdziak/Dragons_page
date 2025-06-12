@@ -1,0 +1,31 @@
+{
+  "navbar": {
+    "home": "Strona główna",
+    "news": "Aktualności",
+    "projects": "Projekty",
+    "contact": "Kontakt"
+  },
+  "home": {
+    "title": "Witaj na stronie Koła Naukowego",
+    "description": "Jesteśmy zespołem studentów pasjonujących się nowoczesnymi technologiami, cyberbezpieczeństwem i projektami badawczo-rozwojowymi.",
+    "see_news": "Zobacz aktualności",
+    "see_projects": "Nasze projekty"
+  },
+  "news": {
+    "title": "Aktualności",
+    "description": "Bądź na bieżąco z działaniami naszego koła naukowego."
+  },
+  "projects": {
+    "title": "Nasze projekty",
+    "description": "Poznaj projekty, które realizujemy indywidualnie i zespołowo."
+  },
+  "contact": {
+    "title": "Kontakt",
+    "description": "Skontaktuj się z nami lub odwiedź naszą salę."
+  },
+  "admin": {
+    "title": "Panel administratora",
+    "description": "Zarządzaj treścią i aktualnościami na stronie."
+  }
+
+}
