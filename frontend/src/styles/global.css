@@ -1,40 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap');
+
 body {
   margin: 0;
-  font-family: sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
+  font-family: 'Share Tech Mono', monospace;
+  background-color: var(--primary-bg);
+  color: var(--text-light);
+  transition: background-color 0.3s, color 0.3s;
 }
 
-body.dark {
-  --bg: #121212;
-  --text: #fff;
-}
-
-body.light {
-  --bg: #f0f0f0;
-  --text: #000;
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background: var(--bg);
-  border-bottom: 1px solid #444;
-}
-
-.navbar-menu {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-
-.navbar a {
+a {
+  color: var(--primary-fg);
   text-decoration: none;
-  color: var(--text);
 }
 
-.logo {
-  height: 40px;
+a:hover {
+  text-shadow: 0 0 5px var(--primary-fg);
+}
+
+.container {
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    padding: 1rem;
+  }
 }

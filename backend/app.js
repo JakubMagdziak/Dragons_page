@@ -1,22 +1,32 @@
-require("dotenv").config();
-const express = require("express");
-const connectDB = require("./config/db");
-const cors = require("cors");
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
 
 const app = express();
 
-// Połącz z MongoDB
-connectDB();
-
-// Middleware
+// Middlewares
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); // JSON parser
+
+// Public folder for uploaded images (optional for later)
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
-app.use("/api/news", require("./routes/news"));
+app.use('/api/news', require('./routes/news'));
+app.use('/api/projects', require('./routes/projects'));
+// app.use('/api/auth', require('./routes/auth')); ← do dodania w Etapie 4
 
-// Start serwera
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
+app.use('/api/auth', require('./routes/auth'));
+
+app.use('/api/upload', require('./routes/upload'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+app.use('/api/projects', require('./routes/projects'));
+
+
+// Simple test route (optional)
+app.get('/api/ping', (req, res) => {
+  res.json({ msg: 'pong' });
 });
+
+module.exports = app;

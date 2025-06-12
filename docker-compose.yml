@@ -1,38 +1,30 @@
-version: "3.8"
-
+version: "3"
 services:
-  frontend:
-    build: ./frontend
-    ports:
-      - "3000:5173"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    depends_on:
-      - backend
-
-  backend:
-      build: ./backend
-      container_name: backend-app
-      restart: unless-stopped
-      ports:
-        - "4000:5000"
-      environment:
-        - MONGO_URI=mongodb://mongo:27017/cyberdragons
-        - PORT=4000
-      depends_on:
-        - mongo
-      volumes:
-        - ./backend:/app
-      command: npm start
   mongo:
     image: mongo
-    container_name: mongo-db
-    restart: unless-stopped
+    container_name: dragons_mongo
     ports:
       - "27017:27017"
     volumes:
-      - mongo-data:/data/db
+      - mongodb_data:/data/db
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
 
 volumes:
-  mongo-data:
+  mongodb_data:

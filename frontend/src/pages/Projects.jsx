@@ -1,16 +1,12 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import ProjectList from '../components/ProjectList';
 
-function Projects() {
-  const { t } = useTranslation();
-
+function ProjectsPage() {
   return (
-    <section className="page-section">
-      <h1>{t("projects.title")}</h1>
-      <p>{t("projects.description")}</p>
-      {/* TODO: lista projektów w przyszłości */}
-    </section>
+    <div className="container">
+      <h1>Projekty</h1>
+      <ProjectList />
+    </div>
   );
 }
 
-export default Projects;
+export default ProjectsPage;

@@ -1,29 +1,25 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
+import LanguageSwitcher from './LanguageSwitcher';
+import './Navbar.css';
 
-const Navbar = () => {
-  const location = useLocation();
-
-  const linkStyle = (path) => ({
-    color: location.pathname === path ? "#20c20e" : "#bbb",
-    textDecoration: "none",
-    margin: "0 1rem",
-    fontWeight: "bold",
-  });
-
+function Navbar() {
   return (
-    <nav style={{ backgroundColor: "#000", padding: "1rem 2rem", display: "flex", alignItems: "center" }}>
-      <div style={{ flexGrow: 1, color: "#20c20e", fontWeight: "bold", fontSize: "1.5rem" }}>
-        Cybersecurity Research Group
+    <nav className="navbar">
+      <div className="logo">Dragons 🐉</div>
+      <div className="nav-links">
+        <Link to="/">Home</Link>
+        <Link to="/news">News</Link>
+        <Link to="/projects">Projects</Link>
+        <Link to="/contact">Contact</Link>
+        <Link to="/admin">Admin</Link>
       </div>
-      <div>
-        <Link to="/" style={linkStyle("/")}>Home</Link>
-        <Link to="/news" style={linkStyle("/news")}>News</Link>
-        <Link to="/projects" style={linkStyle("/projects")}>Projects</Link>
-        <Link to="/contact" style={linkStyle("/contact")}>Contact</Link>
+      <div className="controls">
+        <LanguageSwitcher />
+        <ThemeToggle />
       </div>
     </nav>
   );
-};
+}
 
 export default Navbar;

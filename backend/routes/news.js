@@ -1,30 +1,31 @@
-import express from 'express';
-import News from '../models/News.js';
+const auth = require('../middleware/authMiddleware');
 
-const router = express.Router();
-
-// Pobierz wszystkie newsy
-router.get('/', async (req, res) => {
+// EDYCJA NEWS
+router.put('/:id', auth, async (req, res) => {
   try {
-    const news = await News.find().sort({ date: -1 }).limit(5);
+    const { title, content, imageUrl, createdAt } = req.body;
+    const news = await News.findByIdAndUpdate(
+      req.params.id,
+      {
+        title,
+        content,
+        imageUrl,
+        createdAt: createdAt || new Date()
+      },
+      { new: true }
+    );
     res.json(news);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ error: 'Błąd edycji' });
   }
 });
 
-// Dodaj nowy news
-router.post('/', async (req, res) => {
-  const { title, content } = req.body;
-  if (!title) return res.status(400).json({ message: 'Title is required' });
-
+// USUNIĘCIE NEWS
+router.delete('/:id', auth, async (req, res) => {
   try {
-    const newNews = new News({ title, content });
-    await newNews.save();
-    res.status(201).json(newNews);
+    await News.findByIdAndDelete(req.params.id);
+    res.status(204).end();
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ error: 'Błąd usuwania' });
   }
 });
-
-export default router;

@@ -1,9 +1,9 @@
-import React from "react";
-
-const Footer = () => (
-  <footer style={{ backgroundColor: "#000", color: "#555", padding: "1rem 2rem", textAlign: "center", fontSize: "0.9rem" }}>
-    © 2025 Cybersecurity Research Group. All rights reserved.
-  </footer>
-);
+function Footer() {
+  return (
+    <footer style={{ textAlign: 'center', padding: '1rem', marginTop: 'auto' }}>
+      <p>© 2025 Dragons Cybersecurity Club</p>
+    </footer>
+  );
+}
 
 export default Footer;

@@ -1,36 +1,53 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-const AddNewsForm = ({ onAdd }) => {
+function AddNewsForm({ token }) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+const [file, setFile] = useState(null);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!title) {
-      alert('Title is required');
-      return;
-    }
-    await onAdd({ title, content });
-    setTitle('');
-    setContent('');
-  };
+const handleUpload = async () => {
+  const formData = new FormData();
+  formData.append('image', file);
+  const res = await fetch('/api/upload', {
+    method: 'POST',
+    headers: { Authorization: 'Bearer ' + token },
+    body: formData,
+  });
+  const data = await res.json();
+  return data.imageUrl;
+};
+
+const submit = async (e) => {
+  e.preventDefault();
+  let finalImageUrl = imageUrl;
+  if (file) finalImageUrl = await handleUpload();
+
+  const res = await fetch('/api/news', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },
+    body: JSON.stringify({ title, content, imageUrl: finalImageUrl }),
+  });
+
+  if (res.ok) alert('Dodano!');
+  else alert('Błąd przy dodawaniu');
+};
+
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        required
-      />
-      <textarea
-        placeholder="Content"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-      />
-      <button type="submit">Add News</button>
+    <form onSubmit={submit}>
+      <h2>Dodaj aktualność</h2>
+      <input placeholder="Tytuł" value={title} onChange={e => setTitle(e.target.value)} />
+      <textarea placeholder="Treść" value={content} onChange={e => setContent(e.target.value)} />
+      <input placeholder="Link do obrazu (opcjonalnie)" value={imageUrl} onChange={e => setImageUrl(e.target.value)} />
+      <input type="file" onChange={e => setFile(e.target.files[0])} />
+
+      <button type="submit">Dodaj</button>
     </form>
   );
-};
+}
 
 export default AddNewsForm;

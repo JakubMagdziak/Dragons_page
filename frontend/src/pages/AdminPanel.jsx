@@ -1,20 +1,19 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import AddProjectForm from '../components/AddProjectForm';
+import ProjectEditor from '../components/ProjectEditor';
 
-function Contact() {
-  const { t } = useTranslation();
+function AdminPanel() {
+  const [token, setToken] = useState(localStorage.getItem('token') || '');
+
+  if (!token) return <LoginForm onLogin={setToken} />;
 
   return (
-    <section className="page-section">
-      <h1>{t("contact.title")}</h1>
-      <p>{t("contact.description")}</p>
-      <ul>
-        <li>Email: kontakt@twojekolo.pl</li>
-        <li>Discord: zaproszenie</li>
-        <li>Sala: B-123</li>
-      </ul>
-    </section>
+    <div className="container">
+      <h1>Panel administratora</h1>
+      <AddNewsForm token={token} />
+      <NewsEditor token={token} />
+      <hr />
+      <AddProjectForm token={token} />
+      <ProjectEditor token={token} />
+    </div>
   );
 }
-
-export default Contact;
