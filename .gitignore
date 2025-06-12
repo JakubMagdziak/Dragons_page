@@ -1,0 +1,54 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Build output
+dist/
+build/
+
+# Vite cache
+.vite/
+
+# dotenv environment files
+.env
+.env.*.local
+
+# Docker
+docker-compose.override.yml
+*.local.yml
+*.env
+.docker/
+
+# MongoDB volume (if mapped to local folder)
+mongo-data/
+
+# IDE / editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Optional: exclude local backups
+*.bak
+*.old
+*.swp
+*.tmp
