@@ -1,11 +1,16 @@
-const express = require('express');
+import express from 'express';
+import multer from 'multer';
+import auth from '../middleware/authMiddleware.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const router = express.Router();
-const multer = require('multer');
-const auth = require('../middleware/authMiddleware');
-const path = require('path');
 
 const storage = multer.diskStorage({
-  destination: 'uploads/',
+  destination: path.join(__dirname, '../uploads/'),
   filename: (req, file, cb) => {
     const name = Date.now() + path.extname(file.originalname);
     cb(null, name);
@@ -18,4 +23,4 @@ router.post('/', auth, upload.single('image'), (req, res) => {
   res.json({ imageUrl: `/uploads/${req.file.filename}` });
 });
 
-module.exports = router;
+export default router;

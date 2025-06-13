@@ -1,7 +1,9 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
-const News = require('./models/News');
-const Project = require('./models/Project');
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import News from './models/News.js';
+import Project from './models/Project.js';
+
+dotenv.config();
 
 mongoose.connect(process.env.MONGO_URI)
   .then(async () => {

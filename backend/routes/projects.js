@@ -1,7 +1,8 @@
-const express = require('express');
+import express from 'express';
+import Project from '../models/Project.js';
+import auth from '../middleware/authMiddleware.js';
+
 const router = express.Router();
-const Project = require('../models/Project');
-const auth = require('../middleware/authMiddleware');
 
 // GET – publiczny
 router.get('/', async (req, res) => {
@@ -54,4 +55,4 @@ router.delete('/:id', auth, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

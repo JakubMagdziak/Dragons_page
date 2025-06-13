@@ -1,11 +1,11 @@
+import ContactForm from '../components/ContactForm';
+import React from 'react';
+
 function Contact() {
   return (
-    <div className="container">
+    <div>
       <h1>Kontakt</h1>
-      <p>
-        Możesz się z nami skontaktować poprzez e-mail: <a href="mailto:kontakt@dragons.pl">kontakt@dragons.pl</a><br />
-        Albo odwiedź nas w sali 2.12 na wydziale Informatyki :)
-      </p>
+      <ContactForm />
     </div>
   );
 }

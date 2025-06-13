@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import React from 'react';
 
 function NewsEditor({ token }) {
   const [newsList, setNewsList] = useState([]);
   const [editItem, setEditItem] = useState(null);
 
   const fetchNews = () => {
-    fetch('/api/news')
+    fetch('http://localhost:4000/api/news')
       .then(res => res.json())
       .then(setNewsList);
   };
@@ -16,7 +17,7 @@ function NewsEditor({ token }) {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Na pewno chcesz usunąć?")) return;
-    await fetch(`/api/news/${id}`, {
+    await fetch(`http://localhost:4000/api/news/${id}`, {
       method: 'DELETE',
       headers: { Authorization: 'Bearer ' + token },
     });
@@ -24,7 +25,7 @@ function NewsEditor({ token }) {
   };
 
   const handleSave = async () => {
-    const res = await fetch(`/api/news/${editItem._id}`, {
+    const res = await fetch(`http://localhost:4000/api/news/${editItem._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

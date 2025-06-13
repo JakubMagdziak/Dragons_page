@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
+import React from 'react';
 
 function NewsList() {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    fetch('/api/news')
+    fetch('http://localhost:4000/api/news')
       .then(res => res.json())
       .then(data => setNews(data))
       .catch(err => console.error(err));

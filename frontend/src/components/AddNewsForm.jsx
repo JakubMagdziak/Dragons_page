@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import React from 'react';
+
 
 function AddNewsForm({ token }) {
   const [title, setTitle] = useState('');
@@ -9,7 +11,7 @@ const [file, setFile] = useState(null);
 const handleUpload = async () => {
   const formData = new FormData();
   formData.append('image', file);
-  const res = await fetch('/api/upload', {
+  const res = await fetch('http://localhost:4000/api/upload', {
     method: 'POST',
     headers: { Authorization: 'Bearer ' + token },
     body: formData,
@@ -23,11 +25,11 @@ const submit = async (e) => {
   let finalImageUrl = imageUrl;
   if (file) finalImageUrl = await handleUpload();
 
-  const res = await fetch('/api/news', {
+  const res = await fetch('http://localhost:4000/api/news', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token
+      'Authorization': `Bearer ${token}`,
     },
     body: JSON.stringify({ title, content, imageUrl: finalImageUrl }),
   });

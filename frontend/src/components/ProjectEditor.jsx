@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import React from 'react';
 
 function ProjectEditor({ token }) {
   const [projects, setProjects] = useState([]);
   const [editItem, setEditItem] = useState(null);
 
   const fetchProjects = () => {
-    fetch('/api/projects')
+    fetch('http://localhost:4000/api/projects')
       .then(res => res.json())
       .then(setProjects);
   };
@@ -16,7 +17,7 @@ function ProjectEditor({ token }) {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Na pewno chcesz usunąć projekt?")) return;
-    await fetch(`/api/projects/${id}`, {
+    await fetch(`http://localhost:4000/api/projects/${id}`, {
       method: 'DELETE',
       headers: { Authorization: 'Bearer ' + token },
     });
@@ -24,7 +25,7 @@ function ProjectEditor({ token }) {
   };
 
   const handleSave = async () => {
-    const res = await fetch(`/api/projects/${editItem._id}`, {
+    const res = await fetch(`http://localhost:4000/api/projects/${editItem._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +45,7 @@ function ProjectEditor({ token }) {
       <h2>Zarządzanie projektami</h2>
       {projects.map(item => (
         <div key={item._id} style={{ borderBottom: '1px solid var(--primary-fg)', padding: '1rem 0' }}>
-          {editItem?.id === item._id ? (
+          {editItem?._id === item._id ? (
             <>
               <input value={editItem.title} onChange={e => setEditItem({ ...editItem, title: e.target.value })} />
               <textarea value={editItem.description} onChange={e => setEditItem({ ...editItem, description: e.target.value })} />

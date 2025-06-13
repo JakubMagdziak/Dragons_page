@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from 'react';
 
 function AddProjectForm({ token }) {
   const [title, setTitle] = useState('');
@@ -8,7 +9,7 @@ function AddProjectForm({ token }) {
   const submit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('/api/projects', {
+    const res = await fetch('http://localhost:4000/api/projects', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

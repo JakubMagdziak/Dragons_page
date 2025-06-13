@@ -1,14 +1,14 @@
-import { useContext } from 'react';
-import { LanguageContext } from '../context/LanguageContext';
+import React, { useState } from 'react';
+import { LanguageContext } from './../context/LanguageContext';
 
-function LanguageSwitcher() {
-  const { language, setLanguage } = useContext(LanguageContext);
+const LanguageProvider = ({ children }) => {
+  const [language, setLanguage] = useState('pl');
 
-  const toggle = () => {
-    setLanguage(prev => (prev === 'pl' ? 'en' : 'pl'));
-  };
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+};
 
-  return <button onClick={toggle}>{language === 'pl' ? '🇬🇧 English' : '🇵🇱 Polski'}</button>;
-}
-
-export default LanguageSwitcher;
+export default LanguageProvider;

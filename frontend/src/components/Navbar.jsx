@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
-import './Navbar.css';
+import './../styles/components/Navbar.css'; // Assuming you have a CSS file for styling
+import React from 'react';
 
 function Navbar() {
   return (

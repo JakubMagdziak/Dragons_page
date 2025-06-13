@@ -6,6 +6,8 @@ import Contact from './pages/Contact';
 import AdminPanel from './pages/AdminPanel';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import React from 'react';
+
 
 function App() {
   return (

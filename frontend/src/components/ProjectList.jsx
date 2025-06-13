@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import React from 'react';
 
 function ProjectList() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    fetch('/api/projects')
+    fetch('http://localhost:4000/api/projects')
+
       .then(res => res.json())
       .then(data => setProjects(data))
       .catch(err => console.error(err));
