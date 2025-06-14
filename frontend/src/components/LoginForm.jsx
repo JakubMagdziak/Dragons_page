@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './../styles/components/admin-panel/LoginForm.css';
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState('');
@@ -28,22 +29,24 @@ function LoginForm({ onLogin }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Zaloguj się</h2>
-      <input
-        type="text"
-        placeholder="Login"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Hasło"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Zaloguj</button>
-    </form>
+    <div className="login-wrapper">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h2>Zaloguj się</h2>
+        <input
+          type="text"
+          placeholder="Login"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Hasło"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Zaloguj</button>
+      </form>
+    </div>
   );
 }
 

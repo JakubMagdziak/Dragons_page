@@ -1,0 +1,106 @@
+.project-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.project-editor h2 {
+  font-family: var(--font-header);
+  color: var(--accent);
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+/* Każdy projekt */
+.project-item {
+  background-color: var(--secondary-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 255, 80, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Główka z tytułem i datą */
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-date {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  color: var(--text-color);
+}
+
+/* Edytor pól */
+.project-edit-box input,
+.project-edit-box textarea {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+
+.project-edit-box textarea {
+  min-height: 200px;
+  resize: vertical;
+}
+
+/* Podgląd obrazka */
+.project-image-preview img {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-top: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+/* Przyciski pod formularzem */
+.edit-controls {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.edit-controls button,
+.edit-actions button {
+  background-color: var(--accent);
+  color: var(--primary-bg);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-controls button:hover,
+.edit-actions button:hover {
+  background-color: var(--accent-light);
+}
+
+.project-edit-box select {
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='10'%20height='10'%20viewBox='0%200%2010%2010'%3E%3Cpath%20fill='white'%20d='M0%202l5%205%205-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.65rem;
+}

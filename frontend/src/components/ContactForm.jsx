@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './../styles/components/ContactForm.css';
 
 function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -28,9 +29,10 @@ function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="contact-form" onSubmit={handleSubmit}>
       <h2>Formularz kontaktowy</h2>
       <input
+        className="contact-input"
         name="name"
         placeholder="Twoje imię"
         value={form.name}
@@ -38,6 +40,7 @@ function ContactForm() {
         required
       />
       <input
+        className="contact-input"
         name="email"
         placeholder="Twój email"
         value={form.email}
@@ -46,14 +49,15 @@ function ContactForm() {
         required
       />
       <textarea
+        className="contact-textarea"
         name="message"
         placeholder="Wiadomość"
         value={form.message}
         onChange={handleChange}
         required
       />
-      <button type="submit">Wyślij</button>
-      {status && <p>{status}</p>}
+      <button className="contact-button" type="submit">Wyślij</button>
+      {status && <p className="contact-status">{status}</p>}
     </form>
   );
 }

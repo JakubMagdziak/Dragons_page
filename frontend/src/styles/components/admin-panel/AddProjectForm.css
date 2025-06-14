@@ -1,0 +1,102 @@
+.add-project-form {
+  background-color: var(--secondary-bg);
+  padding: 4rem 3rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 0 20px rgba(0, 255, 80, 0.08);
+}
+
+.add-project-form h2 {
+  font-family: var(--font-header);
+  color: var(--accent);
+  font-size: 2rem;
+  text-align: center;
+}
+
+.add-project-form input,
+.add-project-form textarea {
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.add-project-form textarea {
+  min-height: 200px;
+  resize: vertical;
+}
+
+.add-project-form input:focus,
+.add-project-form textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.add-project-form button {
+  background-color: var(--accent);
+  color: var(--primary-bg);
+  border: none;
+  padding: 0.9rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-project-form button:hover {
+  background-color: var(--accent-light);
+}
+
+.project-image-preview img {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+/* TAGI */
+.tag-input-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  background-color: var(--primary-bg);
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.tag-chip {
+  background-color: var(--accent);
+  color: var(--primary-bg);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tag-chip span {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tag-input-container input {
+  flex-grow: 1;
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  padding: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+}

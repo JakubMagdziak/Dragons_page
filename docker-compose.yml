@@ -30,14 +30,7 @@ services:
       - /app/node_modules
     command: npm run dev
   
-  admin-runner:
-    build:
-      context: ./backend
-    command: node createAdmin.js
-    depends_on:
-      - mongo
-    networks:
-      - default
+
 
 volumes:
   mongodb_data:

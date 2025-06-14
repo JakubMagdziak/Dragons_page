@@ -1,0 +1,13 @@
+.contact-page {
+  max-width: 75%;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.contact-page h1 {
+  font-size: 2rem;
+  font-family: var(--font-header);
+  color: var(--accent);
+  margin-bottom: 2rem;
+}

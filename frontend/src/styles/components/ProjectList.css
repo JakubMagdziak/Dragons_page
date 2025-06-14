@@ -1,0 +1,103 @@
+
+.project-card {
+  background-color: var(--secondary-bg);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 0 15px rgba(0, 255, 80, 0.08);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 20px rgba(0, 255, 80, 0.15);
+}
+
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.project-header h2 {
+  font-family: var(--font-header);
+  font-size: 1.3rem;
+  color: var(--accent);
+}
+
+.project-date {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  color: var(--text-color);
+}
+
+.project-description {
+  font-size: 1rem;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+
+.project-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* <-- to najważniejsze */
+  padding: 2rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+
+.project-status {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  background-color: var(--accent);
+  color: var(--primary-bg);
+  width: fit-content;
+}
+
+/* Dodatkowe klasy statusowe (opcjonalnie różne kolory) */
+.status-planowany {
+  background-color: #007d21;
+}
+.status-w\ trakcie {
+  background-color: #ffaa00;
+}
+.status-zakończony {
+  background-color: #00c16e;
+}
+
+/* TAGI */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+
+.project-tag {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.project-tag:hover {
+  background-color: var(--accent);
+  color: var(--primary-bg);
+}
