@@ -8,6 +8,7 @@ function NewsPage() {
       <h1>Aktualności</h1>
       <NewsList />
     </div>
+
   );
 }
 

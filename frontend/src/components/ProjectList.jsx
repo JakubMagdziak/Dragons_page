@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
-import '.././styles/components/ProjectList.css';
+import '../styles/components/ProjectList.css';
 
 function ProjectList() {
   const [projects, setProjects] = useState([]);
@@ -19,31 +19,41 @@ function ProjectList() {
 
   return (
     <div className="project-container">
-      {projects.map(project => (
-       <div key={project._id} className="project-card">
-        <div className="project-header">
-          <h2>{project.title}</h2>
-          <span className="project-date">{new Date(project.createdAt).toLocaleDateString()}</span>
-        </div>
+      {projects.map((project) => {
+        return (
+          <div key={project._id} className="project-card">
+            {project.imageUrl && (
+              <img src={project.imageUrl} alt={project.title} className="project-image" />
+            )}
 
-        <p className="project-description">{project.description}</p>
+            <div className="project-content">
+              <div className="project-header">
+                <div className="project-meta">
+                  <h2>{project.title}</h2>
+                  {project.status && (
+                    <span className={`project-status status-${project.status.replace(/\s/g, '-').toLowerCase()}`}>
+                      {project.status}
+                    </span>
+                  )}
+                </div>
+                <span className="project-date">
+                  {new Date(project.createdAt).toLocaleDateString()}
+                </span>
+              </div>
 
-        {/* STATUS */}
-        {project.status && (
-          <span className={`project-status status-${project.status.toLowerCase()}`}>
-            {project.status}
-          </span>
-        )}
+              <p className="project-description">{project.description}</p>
 
-        {/* TAGI */}
-        <div className="project-tags">
-          {project.tags && project.tags.map((tag, index) => (
-            <span key={index} className="project-tag">{tag}</span>
-          ))}
-        </div>
-      </div>
-
-      ))}
+              {project.tags?.length > 0 && (
+                <div className="project-tags">
+                  {project.tags.map((tag, index) => (
+                    <span key={index} className="project-tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

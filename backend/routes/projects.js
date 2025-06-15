@@ -17,13 +17,16 @@ router.get('/', async (req, res) => {
 // POST – tylko admin
 router.post('/', auth, async (req, res) => {
   try {
-    const { title, description, tags, createdAt } = req.body;
+    const { title, description, tags, imageUrl, status } = req.body;
+
     const project = await Project.create({
       title,
       description,
       tags,
-      createdAt: createdAt || new Date(),
+      imageUrl,
+      status,
     });
+
     res.status(201).json(project);
   } catch (err) {
     res.status(500).json({ error: 'Błąd zapisu' });
@@ -33,12 +36,14 @@ router.post('/', auth, async (req, res) => {
 // PUT – tylko admin
 router.put('/:id', auth, async (req, res) => {
   try {
-    const { title, description, tags, createdAt } = req.body;
+    const { title, description, tags, imageUrl, status } = req.body;
+
     const updated = await Project.findByIdAndUpdate(
       req.params.id,
-      { title, description, tags, createdAt: createdAt || new Date() },
+      { title, description, tags, imageUrl, status },
       { new: true }
     );
+
     res.json(updated);
   } catch (err) {
     res.status(500).json({ error: 'Błąd edycji' });

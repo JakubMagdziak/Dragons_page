@@ -18,7 +18,7 @@ function NewsPreview({ news }) {
             {new Date().toLocaleDateString()}
           </span>
         </div>
-        <p>{news.content || 'Brak treści'}</p>
+        <p className="preview-text">{news.content || 'Brak treści'}</p>
       </div>
     </div>
   );

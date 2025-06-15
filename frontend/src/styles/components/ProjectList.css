@@ -1,103 +1,134 @@
-
-.project-card {
-  background-color: var(--secondary-bg);
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 0 15px rgba(0, 255, 80, 0.08);
-  border: 1px solid var(--border-color);
+.project-container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-card {
+  display: flex;
+  background-color: var(--secondary-bg);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 255, 80, 0.05);
+  transition: transform 0.2s ease;
 }
 
 .project-card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 0 20px rgba(0, 255, 80, 0.15);
+  transform: translateY(-2px);
 }
 
+.project-image {
+  width: 180px;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
 
+.project-content {
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  gap: 0.6rem;
+}
+
+/* Tytuł + status + data */
 .project-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
 .project-header h2 {
-  font-family: var(--font-header);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--accent);
+  margin: 0;
 }
 
 .project-date {
-  font-size: 0.9rem;
-  opacity: 0.7;
+  font-size: 0.85rem;
+  opacity: 0.6;
   color: var(--text-color);
 }
 
+/* Statusy */
+.project-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.status-planowany {
+  background-color: #555;
+  color: white;
+}
+.status-w-trakcie {
+  background-color: #ffaa00;
+  color: black;
+}
+.status-zakonczony {
+  background-color: #00cc88;
+  color: black;
+}
+
+/* Opis */
 .project-description {
   font-size: 1rem;
   color: var(--text-color);
-  line-height: 1.6;
+  line-height: 1.5;
+  word-break: break-word;
 }
 
-
-.project-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem; /* <-- to najważniejsze */
-  padding: 2rem 1rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-
-.project-status {
-  display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.3rem 0.7rem;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  background-color: var(--accent);
-  color: var(--primary-bg);
-  width: fit-content;
-}
-
-/* Dodatkowe klasy statusowe (opcjonalnie różne kolory) */
-.status-planowany {
-  background-color: #007d21;
-}
-.status-w\ trakcie {
-  background-color: #ffaa00;
-}
-.status-zakończony {
-  background-color: #00c16e;
-}
-
-/* TAGI */
+/* Tagi */
 .project-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 1rem;
-  justify-content: center;
+  margin-top: 0.5rem;
 }
 
-
 .project-tag {
-  display: inline-block;
   background-color: transparent;
   color: var(--accent);
   border: 1px solid var(--accent);
-  padding: 0.3rem 0.6rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-family: var(--font-mono);
-  transition: background-color 0.2s, color 0.2s;
+  transition: 0.2s;
 }
 
 .project-tag:hover {
   background-color: var(--accent);
   color: var(--primary-bg);
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .project-card {
+    flex-direction: column;
+  }
+
+  .project-image {
+    width: 100%;
+    max-height: 200px;
+  }
+
+  .project-content {
+    padding: 1rem;
+  }
 }
